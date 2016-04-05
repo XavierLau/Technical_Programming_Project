@@ -12,6 +12,7 @@ namespace HotelFinder
     [ComVisible(true)]
     public partial class HotelFinder : Form
     {
+        //create a list of hotels and a list of panels
         private List<Hotel> hotelList = new List<Hotel>();
         private List<Panel> panelList = new List<Panel>();
 
@@ -53,11 +54,20 @@ namespace HotelFinder
             comboBoxCountry.SelectedIndex = 0;
         }
 
+        /// <summary>
+        /// display hotels when button search is clicked
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void buttonSearch_Click(object sender, EventArgs e)
         {
             SearchJS.SearchCityBounds(webBrowserMap, textBoxSearch.Text, comboBoxCountry.SelectedItem.ToString());
         }
 
+        /// <summary>
+        /// create a panel and add it to the flowLayoutPanel
+        /// also, dispaly the hotel details to another flowLayoutPanel 
+        /// </summary>
         public void addPanel(string name, string address, string rating)
         {
             Label textBoxName = new Label();
@@ -84,6 +94,9 @@ namespace HotelFinder
             panelList.Add(panel);
         }
 
+        /// <summary>
+        /// clear the privious panels 
+        /// </summary>
         public void clearPanels()
         {
             foreach (Panel panel in panelList)
@@ -93,6 +106,12 @@ namespace HotelFinder
             panelList.Clear();
         }
 
+        /// <summary>
+        /// add hotel detailed information to the hotelList
+        /// </summary>
+        /// <param name="name"></param>
+        /// <param name="address"></param>
+        /// <param name="rating"></param>
         public void addHotel(string name, string address, string rating)
         {
             Hotel hotel = new Hotel();
@@ -102,11 +121,18 @@ namespace HotelFinder
             hotelList.Add(hotel);
         }
 
+        /// <summary>
+        /// clear the hotelList
+        /// </summary>
         public void clearHotelList()
         {
             hotelList.Clear();
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param
         private void onPanelClick(object sender, EventArgs e)
         {
             foreach (Hotel x in hotelList)
