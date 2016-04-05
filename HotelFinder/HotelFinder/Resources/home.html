@@ -77,7 +77,8 @@
                                 map: map,
                                 position: place.geometry.location
                             });
-                            alert(JSON.stringify(place, null, 4));
+                            window.external.addPanel();
+                            //window.external.addHotel(place.name, place.formatted_address, place.rating);
                             //window.external.Name = placeIDs[0];
                         }
 	            });

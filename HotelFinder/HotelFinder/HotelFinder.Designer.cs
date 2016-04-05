@@ -34,9 +34,9 @@
             this.comboBoxCountry = new System.Windows.Forms.ComboBox();
             this.labelCity = new System.Windows.Forms.Label();
             this.labelCountry = new System.Windows.Forms.Label();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.panel1.SuspendLayout();
+            this.panelSearch = new System.Windows.Forms.Panel();
+            this.panelResults = new System.Windows.Forms.Panel();
+            this.panelSearch.SuspendLayout();
             this.SuspendLayout();
             // 
             // webBrowserMap
@@ -95,41 +95,41 @@
             this.labelCountry.TabIndex = 6;
             this.labelCountry.Text = "Country";
             // 
-            // panel1
+            // panelSearch
             // 
-            this.panel1.Controls.Add(this.textBoxSearch);
-            this.panel1.Controls.Add(this.labelCountry);
-            this.panel1.Controls.Add(this.buttonSearch);
-            this.panel1.Controls.Add(this.labelCity);
-            this.panel1.Controls.Add(this.comboBoxCountry);
-            this.panel1.Location = new System.Drawing.Point(0, -1);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(185, 123);
-            this.panel1.TabIndex = 7;
+            this.panelSearch.Controls.Add(this.textBoxSearch);
+            this.panelSearch.Controls.Add(this.labelCountry);
+            this.panelSearch.Controls.Add(this.buttonSearch);
+            this.panelSearch.Controls.Add(this.labelCity);
+            this.panelSearch.Controls.Add(this.comboBoxCountry);
+            this.panelSearch.Location = new System.Drawing.Point(0, -1);
+            this.panelSearch.Name = "panelSearch";
+            this.panelSearch.Size = new System.Drawing.Size(185, 123);
+            this.panelSearch.TabIndex = 7;
             // 
-            // panel2
+            // panelResults
             // 
-            this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.panelResults.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
-            this.panel2.AutoScroll = true;
-            this.panel2.Location = new System.Drawing.Point(0, 120);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(185, 395);
-            this.panel2.TabIndex = 8;
+            this.panelResults.AutoScroll = true;
+            this.panelResults.Location = new System.Drawing.Point(0, 120);
+            this.panelResults.Name = "panelResults";
+            this.panelResults.Size = new System.Drawing.Size(185, 395);
+            this.panelResults.TabIndex = 8;
             // 
             // HotelFinder
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(668, 515);
-            this.Controls.Add(this.panel2);
-            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.panelResults);
+            this.Controls.Add(this.panelSearch);
             this.Controls.Add(this.webBrowserMap);
             this.Name = "HotelFinder";
             this.Text = "Hotel Finder";
             this.Load += new System.EventHandler(this.Form1_Load);
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
+            this.panelSearch.ResumeLayout(false);
+            this.panelSearch.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -142,8 +142,8 @@
         private System.Windows.Forms.ComboBox comboBoxCountry;
         private System.Windows.Forms.Label labelCountry;
         private System.Windows.Forms.Label labelCity;
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Panel panelSearch;
+        private System.Windows.Forms.Panel panelResults;
     }
 }
 

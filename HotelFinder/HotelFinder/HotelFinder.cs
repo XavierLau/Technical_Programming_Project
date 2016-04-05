@@ -5,13 +5,15 @@ using System.Collections.Generic;
 using System.Collections;
 using System.Linq;
 using System.Drawing;
+using System.Runtime.InteropServices;
 
 namespace HotelFinder
 {
+    [ComVisible(true)]
     public partial class HotelFinder : Form
     {
-        private List<Hotel> hotelListing = new List<Hotel>();
-        private List<Panel> panels = new List<Panel>();
+        private List<Hotel> hotelList = new List<Hotel>();
+        private List<Panel> panelList = new List<Panel>();
 
         public HotelFinder()
         {
@@ -24,6 +26,7 @@ namespace HotelFinder
             webBrowserMap.DocumentText = Properties.Resources.home;
             //populates combobox with country names
             PopulateCountryComboBox();
+            webBrowserMap.ObjectForScripting = this;
         }
 
         /// <summary>
@@ -53,37 +56,49 @@ namespace HotelFinder
         private void buttonSearch_Click(object sender, EventArgs e)
         {
             SearchJS.SearchCityBounds(webBrowserMap, textBoxSearch.Text, comboBoxCountry.SelectedItem.ToString());
-            dynamicPanels(12);
         }
 
-        public void dynamicPanels(int hotelNumber)
+        public void addPanel()
         {
-            //Remove previous panels
-            foreach(Panel panel in panels)
+            Panel panel = new Panel();
+            panel.AutoSize = true;
+            panel.BorderStyle = BorderStyle.FixedSingle;
+            panel.Click += new EventHandler(onPanelClick);
+            panelList.Add(panel);
+            panelResults.Controls.Add(panel);
+        }
+
+        public void clearPanels()
+        {
+            foreach (Panel panel in panelList)
             {
                 Controls.Remove(panel);
             }
-
-            //clear panels list
-            panels.Clear();
-
-            for (int i = 0; i < hotelNumber; i++)
-            {
-                Panel pnl = new Panel();
-                pnl.Location = new Point(12, 0 + i * 50);
-                pnl.Size = new Size(150, 50);
-                pnl.BackColor = Color.White;
-                pnl.BorderStyle = BorderStyle.FixedSingle;
-
-                panels.Add(pnl);
-                panels[i].Click += new EventHandler(clickPanel);
-                panel2.Controls.Add(panels[i]);
-            }
+            panelList.Clear();
         }
 
-        private void clickPanel(object sender, EventArgs e)
+        public void addHotel(string name, string address, string rating)
         {
-            Console.WriteLine("hello");
+            Hotel hotel = new Hotel();
+            hotel.Name = name;
+            hotel.Address = address;
+            hotel.Rating = rating;
+            hotelList.Add(hotel);
+        }
+
+        public void clearHotelList()
+        {
+            hotelList.Clear();
+        }
+
+        private void onPanelClick(object sender, EventArgs e)
+        {
+            foreach (Hotel x in hotelList)
+            {
+                Console.WriteLine(x.Name);
+                Console.WriteLine(x.Address);
+                Console.WriteLine(x.Rating);
+            }
         }
     }
 }

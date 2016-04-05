@@ -7,7 +7,6 @@ using System.Threading.Tasks;
 
 namespace HotelFinder
 {
-    [ComVisible(true)]
     public class Hotel
     {
         public string Name { get; set; }
