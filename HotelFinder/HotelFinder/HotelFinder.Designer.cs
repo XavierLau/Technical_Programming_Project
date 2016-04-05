@@ -35,32 +35,30 @@
             this.labelCity = new System.Windows.Forms.Label();
             this.labelCountry = new System.Windows.Forms.Label();
             this.panelSearch = new System.Windows.Forms.Panel();
-            this.panelResults = new System.Windows.Forms.Panel();
+            this.flowLayoutPanelResults = new System.Windows.Forms.FlowLayoutPanel();
             this.panelSearch.SuspendLayout();
             this.SuspendLayout();
             // 
             // webBrowserMap
             // 
-            this.webBrowserMap.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.webBrowserMap.Location = new System.Drawing.Point(186, -1);
+            this.webBrowserMap.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.webBrowserMap.Location = new System.Drawing.Point(0, 0);
             this.webBrowserMap.MinimumSize = new System.Drawing.Size(20, 20);
             this.webBrowserMap.Name = "webBrowserMap";
             this.webBrowserMap.ScrollBarsEnabled = false;
-            this.webBrowserMap.Size = new System.Drawing.Size(481, 516);
+            this.webBrowserMap.Size = new System.Drawing.Size(668, 515);
             this.webBrowserMap.TabIndex = 0;
             // 
             // textBoxSearch
             // 
             this.textBoxSearch.Location = new System.Drawing.Point(12, 22);
             this.textBoxSearch.Name = "textBoxSearch";
-            this.textBoxSearch.Size = new System.Drawing.Size(167, 20);
+            this.textBoxSearch.Size = new System.Drawing.Size(216, 20);
             this.textBoxSearch.TabIndex = 2;
             // 
             // buttonSearch
             // 
-            this.buttonSearch.Location = new System.Drawing.Point(105, 92);
+            this.buttonSearch.Location = new System.Drawing.Point(153, 105);
             this.buttonSearch.Name = "buttonSearch";
             this.buttonSearch.Size = new System.Drawing.Size(75, 23);
             this.buttonSearch.TabIndex = 3;
@@ -72,9 +70,9 @@
             // 
             this.comboBoxCountry.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxCountry.FormattingEnabled = true;
-            this.comboBoxCountry.Location = new System.Drawing.Point(12, 65);
+            this.comboBoxCountry.Location = new System.Drawing.Point(12, 78);
             this.comboBoxCountry.Name = "comboBoxCountry";
-            this.comboBoxCountry.Size = new System.Drawing.Size(167, 21);
+            this.comboBoxCountry.Size = new System.Drawing.Size(216, 21);
             this.comboBoxCountry.TabIndex = 4;
             // 
             // labelCity
@@ -89,7 +87,7 @@
             // labelCountry
             // 
             this.labelCountry.AutoSize = true;
-            this.labelCountry.Location = new System.Drawing.Point(12, 49);
+            this.labelCountry.Location = new System.Drawing.Point(13, 62);
             this.labelCountry.Name = "labelCountry";
             this.labelCountry.Size = new System.Drawing.Size(43, 13);
             this.labelCountry.TabIndex = 6;
@@ -97,6 +95,8 @@
             // 
             // panelSearch
             // 
+            this.panelSearch.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
             this.panelSearch.Controls.Add(this.textBoxSearch);
             this.panelSearch.Controls.Add(this.labelCountry);
             this.panelSearch.Controls.Add(this.buttonSearch);
@@ -104,25 +104,25 @@
             this.panelSearch.Controls.Add(this.comboBoxCountry);
             this.panelSearch.Location = new System.Drawing.Point(0, -1);
             this.panelSearch.Name = "panelSearch";
-            this.panelSearch.Size = new System.Drawing.Size(185, 123);
+            this.panelSearch.Size = new System.Drawing.Size(231, 137);
             this.panelSearch.TabIndex = 7;
             // 
-            // panelResults
+            // flowLayoutPanelResults
             // 
-            this.panelResults.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.flowLayoutPanelResults.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
-            this.panelResults.AutoScroll = true;
-            this.panelResults.Location = new System.Drawing.Point(0, 120);
-            this.panelResults.Name = "panelResults";
-            this.panelResults.Size = new System.Drawing.Size(185, 395);
-            this.panelResults.TabIndex = 8;
+            this.flowLayoutPanelResults.AutoScroll = true;
+            this.flowLayoutPanelResults.Location = new System.Drawing.Point(0, 133);
+            this.flowLayoutPanelResults.Name = "flowLayoutPanelResults";
+            this.flowLayoutPanelResults.Size = new System.Drawing.Size(231, 382);
+            this.flowLayoutPanelResults.TabIndex = 8;
             // 
             // HotelFinder
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(668, 515);
-            this.Controls.Add(this.panelResults);
+            this.Controls.Add(this.flowLayoutPanelResults);
             this.Controls.Add(this.panelSearch);
             this.Controls.Add(this.webBrowserMap);
             this.Name = "HotelFinder";
@@ -143,7 +143,7 @@
         private System.Windows.Forms.Label labelCountry;
         private System.Windows.Forms.Label labelCity;
         private System.Windows.Forms.Panel panelSearch;
-        private System.Windows.Forms.Panel panelResults;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelResults;
     }
 }
 

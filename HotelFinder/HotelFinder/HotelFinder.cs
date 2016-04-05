@@ -61,11 +61,10 @@ namespace HotelFinder
         public void addPanel()
         {
             Panel panel = new Panel();
-            panel.AutoSize = true;
             panel.BorderStyle = BorderStyle.FixedSingle;
             panel.Click += new EventHandler(onPanelClick);
             panelList.Add(panel);
-            panelResults.Controls.Add(panel);
+            flowLayoutPanelResults.Controls.Add(panel);
         }
 
         public void clearPanels()
