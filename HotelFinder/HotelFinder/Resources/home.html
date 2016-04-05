@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"> 
+    <style type="text/css">
+      html, body { height: 100%; margin: 0; padding: 0; }
+      #map { height: 100%; }
+    </style>
+  </head>
+  <body>
+    <div id="map"></div>
+	<script>
+        var map;
+        var geocoder;
+        var places;
+
+	    function initMap() {
+            map = new google.maps.Map(document.getElementById('map'), {
+                center: {lat: 0, lng: 0},
+                zoom: 3
+            });
+            geocoder = new google.maps.Geocoder();
+            places = new google.maps.places.PlacesService(map);
+	    }
+
+        //finds the bounds of cities
+	    function geocodeAddress(city, country, geocoder, resultsMap) {
+	        var address = city;
+	        geocoder.geocode({
+	            'address': address,
+	            'componentRestrictions': {
+	                'country': country
+	            }
+	        }, function (results, status) {
+	            if (status === google.maps.GeocoderStatus.OK) {
+	                var cityBounds = [];
+	                for (i = 0; i < results.length; i++) {
+	                    if ((results[i].address_components[0].long_name.toLowerCase() == city.toLowerCase())) {
+	                        cityBounds.push(results[i].geometry.bounds);
+	                    }
+	                }
+	                if (cityBounds.length > 0) {
+	                    hotelSearch(cityBounds);
+	                }
+	            } else {
+	                alert('Geocode was not successful for the following reason: ' + status);
+	            }
+	        });
+	    }
+
+	    function hotelSearch(cityBounds) {
+	        for (i = 0; i < cityBounds.length; i++) {
+                //perform hotel search
+	            places.nearbySearch({
+	                'bounds': cityBounds[i],
+	                'types': ['lodging']
+	            }, function (results, status) {
+	                if (status == google.maps.places.PlacesServiceStatus.OK) {
+	                    var placeIDs = [];
+	                    for (var i = 0; i < results.length; i++) {
+	                        placeIDs.push(results[i].place_id);
+	                    }
+	                    if (placeIDs.length > 0) {
+	                        hotelDetailsSearch(placeIDs);
+	                    }
+	                }
+	            })
+	        }
+	    }
+
+	    function hotelDetailsSearch(placeIDs) {
+	        window.external.Name = placeIDs[0];
+	        for (i = 0; i < placeIDs.length; i++) {
+	            places.getDetails({ 'placeId': placeIDs[i] },
+                    function (place, status) {
+                        if (status == google.maps.places.PlacesServiceStatus.OK) {
+                            var marker = new google.maps.Marker({
+                                map: map,
+                                position: place.geometry.location
+                            });
+                        }
+	            });
+	        }
+	    }
+	</script>
+    <script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBWBwHTP9RUW32hgGpvtSKsstydyp6Llbk
+        &libraries=places&callback=initMap">
+    </script>
+  </body>
+</html>
