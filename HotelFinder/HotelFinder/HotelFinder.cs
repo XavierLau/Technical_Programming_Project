@@ -88,7 +88,7 @@ namespace HotelFinder
         {
             foreach (Panel panel in panelList)
             {
-                Controls.Remove(panel);
+                flowLayoutPanelResults.Controls.Remove(panel);
             }
             panelList.Clear();
         }

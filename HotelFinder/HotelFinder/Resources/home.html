@@ -13,6 +13,7 @@
         var map;
         var geocoder;
         var places;
+        var markers = [];
 
 	    function initMap() {
             map = new google.maps.Map(document.getElementById('map'), {
@@ -68,7 +69,15 @@
 	        }
 	    }
 
+        //finds details for hotels found
 	    function hotelDetailsSearch(placeIDs) {
+            //clears previous results from panel
+	        window.external.clearPanels();
+            //clear previous hotels from the hotel list
+	        window.external.clearHotelList();
+            //deletes all previous markers
+	        deleteMarkers();
+            //places markers for all hotels found with details and adds them to a panel in the application
 	        for (i = 0; i < placeIDs.length; i++) {
 	            places.getDetails({ 'placeId': placeIDs[i] },
                     function (place, status) {
@@ -77,11 +86,31 @@
                                 map: map,
                                 position: place.geometry.location
                             });
+                            //add a marker indicating the position of the hotel
+                            markers.push(marker);
                             window.external.addPanel(place.name, place.formatted_address, place.rating);
-                            //window.external.addHotel(place.name, place.formatted_address, place.rating);
-                            //window.external.Name = placeIDs[0];
+                            window.external.addHotel(place.name, place.formatted_address, place.rating);
                         }
 	            });
+	        }
+	    }
+
+        //sets all marker reference to null and empties the container holding all the markers
+        ///Source: https://developers.google.com/maps/documentation/javascript/examples/marker-remove
+	    function deleteMarkers() {
+	        clearMarkers();
+	        markers = [];
+	    }
+
+        //sets all marker references to null
+	    function clearMarkers() {
+	        setMapOnAll(null);
+	    }
+
+        //sets all marker references to null
+	    function setMapOnAll(map) {
+	        for (var i = 0; i < markers.length; i++) {
+	            markers[i].setMap(map);
 	        }
 	    }
 	</script>
