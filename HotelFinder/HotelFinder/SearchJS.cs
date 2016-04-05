@@ -19,18 +19,5 @@ namespace HotelFinder
             object[] javascriptParam = { city, country, geocoder, map };
             webBrowser.Document.InvokeScript("geocodeAddress", javascriptParam);
         }
-
-        public static string returnPlaceID(WebBrowser webbrowser)
-        {
-            string result = "";
-            try
-            {
-                result = webbrowser.Document.InvokeScript("retrieveplaceid").ToString();
-            }
-            catch (Exception e) {
-                Console.WriteLine(e.Message);
-            }
-            return result;
-        }
     }
 }

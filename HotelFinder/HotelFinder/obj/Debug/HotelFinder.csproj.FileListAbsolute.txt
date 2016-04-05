@@ -52,3 +52,9 @@ C:\Users\Xavier Lau\Desktop\Technical-Programming-Project - Copy\Technical-Progr
 C:\Users\Xavier Lau\Desktop\Technical-Programming-Project\HotelFinder\HotelFinder\bin\Debug\HotelFinder.exe.config
 C:\Users\Xavier Lau\Desktop\Technical-Programming-Project\HotelFinder\HotelFinder\obj\Debug\HotelFinder.exe
 C:\Users\Xavier Lau\Desktop\Technical-Programming-Project\HotelFinder\HotelFinder\obj\Debug\HotelFinder.pdb
+C:\Users\Xavier Lau\Desktop\Technical-Programming-Project\HotelFinder\HotelFinder\bin\Debug\HotelFinder.exe
+C:\Users\Xavier Lau\Desktop\Technical-Programming-Project\HotelFinder\HotelFinder\bin\Debug\HotelFinder.pdb
+C:\Users\Xavier Lau\Desktop\Technical-Programming-Project\HotelFinder\HotelFinder\obj\Debug\HotelFinder.csprojResolveAssemblyReference.cache
+C:\Users\Xavier Lau\Desktop\Technical-Programming-Project\HotelFinder\HotelFinder\obj\Debug\HotelFinder.HotelFinder.resources
+C:\Users\Xavier Lau\Desktop\Technical-Programming-Project\HotelFinder\HotelFinder\obj\Debug\HotelFinder.Properties.Resources.resources
+C:\Users\Xavier Lau\Desktop\Technical-Programming-Project\HotelFinder\HotelFinder\obj\Debug\HotelFinder.csproj.GenerateResource.Cache

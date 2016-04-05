@@ -10,7 +10,9 @@ namespace HotelFinder
 {
     public partial class HotelFinder : Form
     {
-        List<Hotel> hotelListing = new List<Hotel>();
+        private List<Hotel> hotelListing = new List<Hotel>();
+        private List<Panel> panels = new List<Panel>();
+
         public HotelFinder()
         {
             InitializeComponent();
@@ -22,8 +24,6 @@ namespace HotelFinder
             webBrowserMap.DocumentText = Properties.Resources.home;
             //populates combobox with country names
             PopulateCountryComboBox();
-            hotel = new Hotel();
-            webBrowserMap.ObjectForScripting = hotel;
         }
 
         /// <summary>
@@ -53,21 +53,15 @@ namespace HotelFinder
         private void buttonSearch_Click(object sender, EventArgs e)
         {
             SearchJS.SearchCityBounds(webBrowserMap, textBoxSearch.Text, comboBoxCountry.SelectedItem.ToString());
-            Console.WriteLine(SearchJS.returnPlaceID(webBrowserMap));
-            
             dynamicPanels(12);
         }
-
-        //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-        private List<string> hotelName = new List<string>();
-        private List<Panel> panels = new List<Panel>();
 
         public void dynamicPanels(int hotelNumber)
         {
             //Remove previous panels
             foreach(Panel panel in panels)
             {
-                this.Controls.Remove(panel);
+                Controls.Remove(panel);
             }
 
             //clear panels list
@@ -90,11 +84,6 @@ namespace HotelFinder
         private void clickPanel(object sender, EventArgs e)
         {
             Console.WriteLine("hello");
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            Console.WriteLine(hotel.Name);
         }
     }
 }
