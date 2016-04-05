@@ -58,13 +58,30 @@ namespace HotelFinder
             SearchJS.SearchCityBounds(webBrowserMap, textBoxSearch.Text, comboBoxCountry.SelectedItem.ToString());
         }
 
-        public void addPanel()
+        public void addPanel(string name, string address, string rating)
         {
+            Label textBoxName = new Label();
+            Label textBoxAddress = new Label();
+            Label textBoxRating = new Label();
             Panel panel = new Panel();
+            FlowLayoutPanel flowLayoutPanel = new FlowLayoutPanel();
+
+            textBoxName.AutoSize = true;
+            textBoxAddress.AutoSize = true;
+            textBoxRating.AutoSize = true;
+
+            flowLayoutPanel.FlowDirection = FlowDirection.TopDown;
             panel.BorderStyle = BorderStyle.FixedSingle;
             panel.Click += new EventHandler(onPanelClick);
-            panelList.Add(panel);
+            textBoxName.Text = name;
+            textBoxAddress.Text = address;
+            textBoxRating.Text = "Rating: "+ rating;
+            panel.Controls.Add(flowLayoutPanel);
+            flowLayoutPanel.Controls.Add(textBoxName);
+            flowLayoutPanel.Controls.Add(textBoxAddress);
+            flowLayoutPanel.Controls.Add(textBoxRating);
             flowLayoutPanelResults.Controls.Add(panel);
+            panelList.Add(panel);
         }
 
         public void clearPanels()
