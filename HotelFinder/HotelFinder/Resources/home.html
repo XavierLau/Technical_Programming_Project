@@ -86,6 +86,25 @@
                                 map: map,
                                 position: place.geometry.location
                             });
+                            // initialize window information to empty
+                            var infowindow = new google.maps.InfoWindow({
+                                content: ''
+                            });
+                            // dispaly content once marker is clicked
+                            google.maps.event.addListener(marker, 'click', function () {
+                                infowindow.close();
+                                infowindow.setContent(contentString);
+                                infowindow.open(map, marker);
+                            });
+                            //set content for makrers
+                            var contentString = '<div id="content">' +
+                              '<div id="siteNotice">' +
+                              '</div>' +
+                              '<h1 id="firstHeading" class="firstHeading">' + place.name + '</h1>' +
+                              '<div id="bodyContent">' + place.formatted_address +
+                              '<h3 id="thirdHeading" class="thirdHeading">' + 'rate: ' + place.rating + '</h3>'
+                              '</div>' +
+                              '</div>';
                             //add a marker indicating the position of the hotel
                             markers.push(marker);
                             window.external.addPanel(place.name, place.formatted_address, place.rating);
