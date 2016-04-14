@@ -6,9 +6,10 @@ using System.Collections;
 using System.Linq;
 using System.Drawing;
 using System.Runtime.InteropServices;
+using System.Net;
 
 namespace HotelFinder
-    {
+{
     /// <summary>
     /// The application allows a user to search for hotels around a given country and city using the google maps api, places library,
     /// and geodata library.
@@ -22,7 +23,9 @@ namespace HotelFinder
         private List<Hotel> hotelList = new List<Hotel>();
         //creates a list of panels
         private List<Panel> panelList = new List<Panel>();
-        
+        //timer to timeout search button
+        Timer timer = new Timer();
+
         public HotelFinder()
         {
             InitializeComponent();
@@ -74,9 +77,32 @@ namespace HotelFinder
         /// <param name="e"></param>
         private void buttonSearch_Click(object sender, EventArgs e)
         {
+            // enables the results panel
             flowLayoutPanelResults.Visible = true;
+            // disables the information panel
             singleHotelPanel.Visible = false;
+            // performs a hotel search
             SearchJS.SearchCityBounds(webBrowserMap, textBoxSearch.Text, comboBoxCountry.SelectedItem.ToString());
+            //time to timeout
+            timer.Interval = 10000;
+            //function to run when timer has pass interval time
+            timer.Tick += timeoutEnded;
+            // start timer
+            timer.Start();
+            // disable search button
+            buttonSearch.Enabled = false;
+
+        }
+
+        /// <summary>
+        /// Enables the search button after 10 seconds have passed.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void timeoutEnded(object sender, EventArgs e)
+        {
+            buttonSearch.Enabled = true;
+            timer.Stop();
         }
 
         /// <summary>
@@ -95,9 +121,12 @@ namespace HotelFinder
             textBoxAddress.AutoSize = true;
             textBoxRating.AutoSize = true;
 
+            //adds flowlaypanel to ensure labels are added on top down
             flowLayoutPanel.FlowDirection = FlowDirection.TopDown;
             panel.BorderStyle = BorderStyle.FixedSingle;
+            //adds the event to change to information panel when a panel is clicked
             flowLayoutPanel.Click += new EventHandler(onPanelClick);
+            textBoxName.Name = "textBoxHName";
             textBoxName.Text = name;
             textBoxAddress.Text = address;
             textBoxRating.Text = "Rating: " + rating;
@@ -153,19 +182,34 @@ namespace HotelFinder
         /// <param name="sender"></param
         private void onPanelClick(object sender, EventArgs e)
         {
-            foreach (Hotel x in hotelList)
+            // get the panel
+            Panel panel = (Panel) sender;
+            // go through panel to find the matching hotel of the hotel panel clicked
+            foreach (Hotel h in hotelList)
             {
-                Console.WriteLine(x.Name);
-                Console.WriteLine(x.Address);
-                Console.WriteLine(x.Rating);
-                Console.WriteLine(x.PhoneNumber);
-                Console.WriteLine(x.Photos);
-            }
-            Panel panel = (Panel)sender;
+                var hotelname = panel.Controls.Find("textBoxHName", true);
+                if (h.Name == hotelname[0].Text)
+                {
+                    // find the label by name
+                    singleHotelPanel.Controls.OfType<Label>().Single(l => l.Name == "labelHotelName").Text = h.Name;
+                    singleHotelPanel.Controls.OfType<Label>().Single(l => l.Name == "labelHotelAddress").Text = h.Address;
+                    singleHotelPanel.Controls.OfType<Label>().Single(l => l.Name == "labelHotelPhoneNumber").Text = h.PhoneNumber;
+                    singleHotelPanel.Controls.OfType<Label>().Single(l => l.Name == "labelHotelRating").Text = "Rating: " + h.Rating;
 
+                    // send request to get image from specified url
+                    var request = WebRequest.Create(h.Photos);
+
+                    // add image to information panel
+                    using (var response = request.GetResponse())
+                    using (var stream = response.GetResponseStream())
+                    {
+                        singleHotelPanel.Controls.OfType<PictureBox>().Single(i => i.Name == "pictureBoxHotelImage").Image = Bitmap.FromStream(stream);
+                    }
+                }
+            }
+            // switch views
             flowLayoutPanelResults.Visible = false;
             singleHotelPanel.Visible = true;
-            Console.Write("hide");
         }
     }
 }
