@@ -107,6 +107,7 @@
                               '</div>';
                             //add a marker indicating the position of the hotel
                             markers.push(marker);
+                            //call c# function: addPanel and addHotel
                             window.external.addPanel(place.name, place.formatted_address, place.rating);
                             window.external.addHotel(place.name, place.formatted_address, place.rating);
                         }

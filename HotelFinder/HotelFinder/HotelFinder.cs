@@ -22,7 +22,7 @@ namespace HotelFinder
         private List<Hotel> hotelList = new List<Hotel>();
         //creates a list of panels
         private List<Panel> panelList = new List<Panel>();
-
+        
         public HotelFinder()
         {
             InitializeComponent();
@@ -95,7 +95,7 @@ namespace HotelFinder
 
             flowLayoutPanel.FlowDirection = FlowDirection.TopDown;
             panel.BorderStyle = BorderStyle.FixedSingle;
-            panel.Click += new EventHandler(onPanelClick);
+            flowLayoutPanel.Click += new EventHandler(onPanelClick);
             textBoxName.Text = name;
             textBoxAddress.Text = address;
             textBoxRating.Text = "Rating: "+ rating;
@@ -149,12 +149,12 @@ namespace HotelFinder
         /// <param name="sender"></param
         private void onPanelClick(object sender, EventArgs e)
         {
-            foreach (Hotel x in hotelList)
-            {
-                Console.WriteLine(x.Name);
-                Console.WriteLine(x.Address);
-                Console.WriteLine(x.Rating);
-            }
+            Panel panel = (Panel)sender;
+
+            flowLayoutPanelResults.Visible = false;
+            singleHotelPanel.Visible = true;
+            Console.Write("hide");
+
         }
     }
 }

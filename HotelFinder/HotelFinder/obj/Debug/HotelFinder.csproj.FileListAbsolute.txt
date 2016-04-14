@@ -58,12 +58,3 @@ C:\Users\Xavier Lau\Desktop\Technical-Programming-Project\HotelFinder\HotelFinde
 C:\Users\Xavier Lau\Desktop\Technical-Programming-Project\HotelFinder\HotelFinder\obj\Debug\HotelFinder.HotelFinder.resources
 C:\Users\Xavier Lau\Desktop\Technical-Programming-Project\HotelFinder\HotelFinder\obj\Debug\HotelFinder.Properties.Resources.resources
 C:\Users\Xavier Lau\Desktop\Technical-Programming-Project\HotelFinder\HotelFinder\obj\Debug\HotelFinder.csproj.GenerateResource.Cache
-C:\Users\Daniel Zhang\Documents\My Web Sites\Technical_Programming_Project\HotelFinder\HotelFinder\bin\Debug\HotelFinder.exe.config
-C:\Users\Daniel Zhang\Documents\My Web Sites\Technical_Programming_Project\HotelFinder\HotelFinder\obj\Debug\HotelFinder.exe
-C:\Users\Daniel Zhang\Documents\My Web Sites\Technical_Programming_Project\HotelFinder\HotelFinder\obj\Debug\HotelFinder.pdb
-C:\Users\Daniel Zhang\Documents\My Web Sites\Technical_Programming_Project\HotelFinder\HotelFinder\bin\Debug\HotelFinder.exe
-C:\Users\Daniel Zhang\Documents\My Web Sites\Technical_Programming_Project\HotelFinder\HotelFinder\bin\Debug\HotelFinder.pdb
-C:\Users\Daniel Zhang\Documents\My Web Sites\Technical_Programming_Project\HotelFinder\HotelFinder\obj\Debug\HotelFinder.csprojResolveAssemblyReference.cache
-C:\Users\Daniel Zhang\Documents\My Web Sites\Technical_Programming_Project\HotelFinder\HotelFinder\obj\Debug\HotelFinder.HotelFinder.resources
-C:\Users\Daniel Zhang\Documents\My Web Sites\Technical_Programming_Project\HotelFinder\HotelFinder\obj\Debug\HotelFinder.Properties.Resources.resources
-C:\Users\Daniel Zhang\Documents\My Web Sites\Technical_Programming_Project\HotelFinder\HotelFinder\obj\Debug\HotelFinder.csproj.GenerateResource.Cache
