@@ -211,5 +211,11 @@ namespace HotelFinder
             flowLayoutPanelResults.Visible = false;
             singleHotelPanel.Visible = true;
         }
+
+        private void backbtn_Click(object sender, EventArgs e)
+        {
+            singleHotelPanel.Visible = false;
+            flowLayoutPanelResults.Visible = true;
+        }
     }
 }

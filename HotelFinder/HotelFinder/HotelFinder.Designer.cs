@@ -42,6 +42,7 @@
             this.labelHotelName = new System.Windows.Forms.Label();
             this.pictureBoxHotelImage = new System.Windows.Forms.PictureBox();
             this.flowLayoutPanelResults = new System.Windows.Forms.FlowLayoutPanel();
+            this.backbtn = new System.Windows.Forms.Button();
             this.panelSearch.SuspendLayout();
             this.singleHotelPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxHotelImage)).BeginInit();
@@ -51,24 +52,27 @@
             // 
             this.webBrowserMap.Dock = System.Windows.Forms.DockStyle.Fill;
             this.webBrowserMap.Location = new System.Drawing.Point(0, 0);
-            this.webBrowserMap.MinimumSize = new System.Drawing.Size(20, 20);
+            this.webBrowserMap.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.webBrowserMap.MinimumSize = new System.Drawing.Size(30, 28);
             this.webBrowserMap.Name = "webBrowserMap";
             this.webBrowserMap.ScrollBarsEnabled = false;
-            this.webBrowserMap.Size = new System.Drawing.Size(668, 515);
+            this.webBrowserMap.Size = new System.Drawing.Size(1002, 713);
             this.webBrowserMap.TabIndex = 0;
             // 
             // textBoxSearch
             // 
-            this.textBoxSearch.Location = new System.Drawing.Point(12, 22);
+            this.textBoxSearch.Location = new System.Drawing.Point(18, 30);
+            this.textBoxSearch.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.textBoxSearch.Name = "textBoxSearch";
-            this.textBoxSearch.Size = new System.Drawing.Size(261, 20);
+            this.textBoxSearch.Size = new System.Drawing.Size(390, 28);
             this.textBoxSearch.TabIndex = 2;
             // 
             // buttonSearch
             // 
-            this.buttonSearch.Location = new System.Drawing.Point(197, 103);
+            this.buttonSearch.Location = new System.Drawing.Point(296, 143);
+            this.buttonSearch.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.buttonSearch.Name = "buttonSearch";
-            this.buttonSearch.Size = new System.Drawing.Size(75, 23);
+            this.buttonSearch.Size = new System.Drawing.Size(112, 32);
             this.buttonSearch.TabIndex = 3;
             this.buttonSearch.Text = "Search";
             this.buttonSearch.UseVisualStyleBackColor = true;
@@ -78,26 +82,29 @@
             // 
             this.comboBoxCountry.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxCountry.FormattingEnabled = true;
-            this.comboBoxCountry.Location = new System.Drawing.Point(12, 78);
+            this.comboBoxCountry.Location = new System.Drawing.Point(18, 108);
+            this.comboBoxCountry.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.comboBoxCountry.Name = "comboBoxCountry";
-            this.comboBoxCountry.Size = new System.Drawing.Size(261, 21);
+            this.comboBoxCountry.Size = new System.Drawing.Size(390, 26);
             this.comboBoxCountry.TabIndex = 4;
             // 
             // labelCity
             // 
             this.labelCity.AutoSize = true;
-            this.labelCity.Location = new System.Drawing.Point(13, 6);
+            this.labelCity.Location = new System.Drawing.Point(20, 8);
+            this.labelCity.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelCity.Name = "labelCity";
-            this.labelCity.Size = new System.Drawing.Size(24, 13);
+            this.labelCity.Size = new System.Drawing.Size(44, 18);
             this.labelCity.TabIndex = 5;
             this.labelCity.Text = "City";
             // 
             // labelCountry
             // 
             this.labelCountry.AutoSize = true;
-            this.labelCountry.Location = new System.Drawing.Point(13, 62);
+            this.labelCountry.Location = new System.Drawing.Point(20, 86);
+            this.labelCountry.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelCountry.Name = "labelCountry";
-            this.labelCountry.Size = new System.Drawing.Size(43, 13);
+            this.labelCountry.Size = new System.Drawing.Size(71, 18);
             this.labelCountry.TabIndex = 6;
             this.labelCountry.Text = "Country";
             // 
@@ -109,8 +116,9 @@
             this.panelSearch.Controls.Add(this.labelCity);
             this.panelSearch.Controls.Add(this.comboBoxCountry);
             this.panelSearch.Location = new System.Drawing.Point(0, -1);
+            this.panelSearch.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panelSearch.Name = "panelSearch";
-            this.panelSearch.Size = new System.Drawing.Size(285, 137);
+            this.panelSearch.Size = new System.Drawing.Size(428, 190);
             this.panelSearch.TabIndex = 7;
             // 
             // singleHotelPanel
@@ -118,25 +126,27 @@
             this.singleHotelPanel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             this.singleHotelPanel.AutoScroll = true;
+            this.singleHotelPanel.Controls.Add(this.backbtn);
             this.singleHotelPanel.Controls.Add(this.labelHotelRating);
             this.singleHotelPanel.Controls.Add(this.labelHotelPhoneNumber);
             this.singleHotelPanel.Controls.Add(this.labelHotelAddress);
             this.singleHotelPanel.Controls.Add(this.labelHotelName);
             this.singleHotelPanel.Controls.Add(this.pictureBoxHotelImage);
-            this.singleHotelPanel.Location = new System.Drawing.Point(0, 133);
+            this.singleHotelPanel.Location = new System.Drawing.Point(0, 184);
+            this.singleHotelPanel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.singleHotelPanel.Name = "singleHotelPanel";
-            this.singleHotelPanel.Size = new System.Drawing.Size(285, 382);
+            this.singleHotelPanel.Size = new System.Drawing.Size(428, 516);
             this.singleHotelPanel.TabIndex = 8;
             this.singleHotelPanel.Visible = false;
-            this.singleHotelPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.singleHotelPanel_Paint);
             // 
             // labelHotelRating
             // 
             this.labelHotelRating.AutoSize = true;
             this.labelHotelRating.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelHotelRating.Location = new System.Drawing.Point(12, 301);
+            this.labelHotelRating.Location = new System.Drawing.Point(18, 417);
+            this.labelHotelRating.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelHotelRating.Name = "labelHotelRating";
-            this.labelHotelRating.Size = new System.Drawing.Size(79, 16);
+            this.labelHotelRating.Size = new System.Drawing.Size(112, 25);
             this.labelHotelRating.TabIndex = 4;
             this.labelHotelRating.Text = "HotelRating";
             // 
@@ -144,9 +154,10 @@
             // 
             this.labelHotelPhoneNumber.AutoSize = true;
             this.labelHotelPhoneNumber.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelHotelPhoneNumber.Location = new System.Drawing.Point(12, 261);
+            this.labelHotelPhoneNumber.Location = new System.Drawing.Point(18, 361);
+            this.labelHotelPhoneNumber.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelHotelPhoneNumber.Name = "labelHotelPhoneNumber";
-            this.labelHotelPhoneNumber.Size = new System.Drawing.Size(127, 16);
+            this.labelHotelPhoneNumber.Size = new System.Drawing.Size(183, 25);
             this.labelHotelPhoneNumber.TabIndex = 3;
             this.labelHotelPhoneNumber.Text = "HotelPhoneNumber";
             // 
@@ -154,9 +165,10 @@
             // 
             this.labelHotelAddress.AutoSize = true;
             this.labelHotelAddress.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelHotelAddress.Location = new System.Drawing.Point(12, 221);
+            this.labelHotelAddress.Location = new System.Drawing.Point(18, 306);
+            this.labelHotelAddress.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelHotelAddress.Name = "labelHotelAddress";
-            this.labelHotelAddress.Size = new System.Drawing.Size(70, 13);
+            this.labelHotelAddress.Size = new System.Drawing.Size(111, 20);
             this.labelHotelAddress.TabIndex = 2;
             this.labelHotelAddress.Text = "HotelAddress";
             // 
@@ -164,17 +176,19 @@
             // 
             this.labelHotelName.AutoSize = true;
             this.labelHotelName.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelHotelName.Location = new System.Drawing.Point(8, 167);
+            this.labelHotelName.Location = new System.Drawing.Point(12, 231);
+            this.labelHotelName.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelHotelName.Name = "labelHotelName";
-            this.labelHotelName.Size = new System.Drawing.Size(69, 13);
+            this.labelHotelName.Size = new System.Drawing.Size(102, 20);
             this.labelHotelName.TabIndex = 1;
             this.labelHotelName.Text = "HotelName";
             // 
             // pictureBoxHotelImage
             // 
-            this.pictureBoxHotelImage.Location = new System.Drawing.Point(13, 10);
+            this.pictureBoxHotelImage.Location = new System.Drawing.Point(20, 14);
+            this.pictureBoxHotelImage.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.pictureBoxHotelImage.Name = "pictureBoxHotelImage";
-            this.pictureBoxHotelImage.Size = new System.Drawing.Size(259, 124);
+            this.pictureBoxHotelImage.Size = new System.Drawing.Size(388, 172);
             this.pictureBoxHotelImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBoxHotelImage.TabIndex = 0;
             this.pictureBoxHotelImage.TabStop = false;
@@ -184,20 +198,32 @@
             this.flowLayoutPanelResults.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             this.flowLayoutPanelResults.AutoScroll = true;
-            this.flowLayoutPanelResults.Location = new System.Drawing.Point(0, 133);
+            this.flowLayoutPanelResults.Location = new System.Drawing.Point(0, 184);
+            this.flowLayoutPanelResults.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.flowLayoutPanelResults.Name = "flowLayoutPanelResults";
-            this.flowLayoutPanelResults.Size = new System.Drawing.Size(285, 382);
+            this.flowLayoutPanelResults.Size = new System.Drawing.Size(428, 529);
             this.flowLayoutPanelResults.TabIndex = 8;
+            // 
+            // backbtn
+            // 
+            this.backbtn.Location = new System.Drawing.Point(305, 458);
+            this.backbtn.Name = "backbtn";
+            this.backbtn.Size = new System.Drawing.Size(103, 37);
+            this.backbtn.TabIndex = 5;
+            this.backbtn.Text = "Back";
+            this.backbtn.UseVisualStyleBackColor = true;
+            this.backbtn.Click += new System.EventHandler(this.backbtn_Click);
             // 
             // HotelFinder
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(668, 515);
+            this.ClientSize = new System.Drawing.Size(1002, 713);
             this.Controls.Add(this.singleHotelPanel);
             this.Controls.Add(this.flowLayoutPanelResults);
             this.Controls.Add(this.panelSearch);
             this.Controls.Add(this.webBrowserMap);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "HotelFinder";
             this.Text = "Hotel Finder";
             this.Load += new System.EventHandler(this.Form1_Load);
@@ -226,6 +252,7 @@
         private System.Windows.Forms.Label labelHotelPhoneNumber;
         private System.Windows.Forms.Label labelHotelAddress;
         private System.Windows.Forms.Label labelHotelName;
+        private System.Windows.Forms.Button backbtn;
     }
 }
 
