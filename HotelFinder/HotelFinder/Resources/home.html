@@ -107,8 +107,12 @@
                               '</div>';
                             //add a marker indicating the position of the hotel
                             markers.push(marker);
-                            window.external.addPanel(place.name, place.formatted_address, place.rating);
-                            window.external.addHotel(place.name, place.formatted_address, place.rating);
+                            
+                            if (place.photos) {
+                                window.external.addPanel(place.name, place.formatted_address, place.rating);
+                                window.external.addHotel(place.name, place.formatted_address, place.rating, place.formatted_phone_number, place.photos[0].getUrl({ 'maxWidth': 1024, 'maxHeight': 768 }));
+                            }
+                            
                         }
 	            });
 	        }

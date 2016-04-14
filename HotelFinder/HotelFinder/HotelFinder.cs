@@ -27,7 +27,7 @@ namespace HotelFinder
         {
             InitializeComponent();
         }
-        
+
         /// <summary>
         /// Loads the map, populates the combobox, enables this form to be accessed by javascript within the webbrowser.
         /// </summary>
@@ -95,10 +95,10 @@ namespace HotelFinder
 
             flowLayoutPanel.FlowDirection = FlowDirection.TopDown;
             panel.BorderStyle = BorderStyle.FixedSingle;
-            panel.Click += new EventHandler(onPanelClick);
+            flowLayoutPanel.Click += new EventHandler(onPanelClick);
             textBoxName.Text = name;
             textBoxAddress.Text = address;
-            textBoxRating.Text = "Rating: "+ rating;
+            textBoxRating.Text = "Rating: " + rating;
 
             panel.Controls.Add(flowLayoutPanel);
             flowLayoutPanel.Controls.Add(textBoxName);
@@ -126,12 +126,14 @@ namespace HotelFinder
         /// <param name="name">the name of the hotel</param>
         /// <param name="address">the address of the hotel</param>
         /// <param name="rating">the hotels review rating</param>
-        public void addHotel(string name, string address, string rating)
+        public void addHotel(string name, string address, string rating, string phoneNumber, string photo)
         {
             Hotel hotel = new Hotel();
             hotel.Name = name;
             hotel.Address = address;
             hotel.Rating = rating;
+            hotel.PhoneNumber = phoneNumber;
+            hotel.Photos = photo;
             hotelList.Add(hotel);
         }
 
@@ -154,6 +156,8 @@ namespace HotelFinder
                 Console.WriteLine(x.Name);
                 Console.WriteLine(x.Address);
                 Console.WriteLine(x.Rating);
+                Console.WriteLine(x.PhoneNumber);
+                Console.WriteLine(x.Photos);
             }
         }
     }
