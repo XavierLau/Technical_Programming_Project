@@ -22,7 +22,7 @@ namespace HotelFinder
         private List<Hotel> hotelList = new List<Hotel>();
         //creates a list of panels
         private List<Panel> panelList = new List<Panel>();
-
+        
         public HotelFinder()
         {
             InitializeComponent();
@@ -74,6 +74,8 @@ namespace HotelFinder
         /// <param name="e"></param>
         private void buttonSearch_Click(object sender, EventArgs e)
         {
+            flowLayoutPanelResults.Visible = true;
+            singleHotelPanel.Visible = false;
             SearchJS.SearchCityBounds(webBrowserMap, textBoxSearch.Text, comboBoxCountry.SelectedItem.ToString());
         }
 
@@ -159,6 +161,11 @@ namespace HotelFinder
                 Console.WriteLine(x.PhoneNumber);
                 Console.WriteLine(x.Photos);
             }
+            Panel panel = (Panel)sender;
+
+            flowLayoutPanelResults.Visible = false;
+            singleHotelPanel.Visible = true;
+            Console.Write("hide");
         }
     }
 }

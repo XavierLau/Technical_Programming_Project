@@ -1,145 +1,151 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge"> 
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <style type="text/css">
-      html, body { height: 100%; margin: 0; padding: 0; }
-      #map { height: 100%; }
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+
+        #map {
+            height: 100%;
+        }
     </style>
-  </head>
-  <body>
+</head>
+<body>
     <div id="map"></div>
-	<script>
+    <script>
         var map;
         var geocoder;
         var places;
         var markers = [];
 
-	    function initMap() {
+        function initMap() {
             map = new google.maps.Map(document.getElementById('map'), {
-                center: {lat: 0, lng: 0},
+                center: { lat: 0, lng: 0 },
                 zoom: 3
             });
             geocoder = new google.maps.Geocoder();
             places = new google.maps.places.PlacesService(map);
-	    }
+        }
 
         //finds the bounds of cities
-	    function geocodeAddress(city, country, geocoder, resultsMap) {
-	        var address = city;
-	        geocoder.geocode({
-	            'address': address,
-	            'componentRestrictions': {
-	                'country': country
-	            }
-	        }, function (results, status) {
-	            if (status === google.maps.GeocoderStatus.OK) {
-	                var cityBounds = [];
-	                for (i = 0; i < results.length; i++) {
-	                    if ((results[i].address_components[0].long_name.toLowerCase() == city.toLowerCase())) {
-	                        cityBounds.push(results[i].geometry.bounds);
-	                    }
-	                }
-	                if (cityBounds.length > 0) {
-	                    hotelSearch(cityBounds);
-	                }
-	            } else {
-	                alert('Geocode was not successful for the following reason: ' + status);
-	            }
-	        });
-	    }
+        function geocodeAddress(city, country, geocoder, resultsMap) {
+            var address = city;
+            geocoder.geocode({
+                'address': address,
+                'componentRestrictions': {
+                    'country': country
+                }
+            }, function (results, status) {
+                if (status === google.maps.GeocoderStatus.OK) {
+                    var cityBounds = [];
+                    for (i = 0; i < results.length; i++) {
+                        if ((results[i].address_components[0].long_name.toLowerCase() == city.toLowerCase())) {
+                            cityBounds.push(results[i].geometry.bounds);
+                        }
+                    }
+                    if (cityBounds.length > 0) {
+                        hotelSearch(cityBounds);
+                    }
+                } else {
+                    alert('Geocode was not successful for the following reason: ' + status);
+                }
+            });
+        }
 
-	    function hotelSearch(cityBounds) {
-	        for (i = 0; i < cityBounds.length; i++) {
+        function hotelSearch(cityBounds) {
+            for (i = 0; i < cityBounds.length; i++) {
                 //perform hotel search
-	            places.nearbySearch({
-	                'bounds': cityBounds[i],
-	                'types': ['lodging']
-	            }, function (results, status) {
-	                if (status == google.maps.places.PlacesServiceStatus.OK) {
-	                    var placeIDs = [];
-	                    for (var i = 0; i < results.length; i++) {
-	                        placeIDs.push(results[i].place_id);
-	                    }
-	                    if (placeIDs.length > 0) {
-	                        hotelDetailsSearch(placeIDs);
-	                    }
-	                }
-	            })
-	        }
-	    }
+                places.nearbySearch({
+                    'bounds': cityBounds[i],
+                    'types': ['lodging']
+                }, function (results, status) {
+                    if (status == google.maps.places.PlacesServiceStatus.OK) {
+                        var placeIDs = [];
+                        for (var i = 0; i < results.length; i++) {
+                            placeIDs.push(results[i].place_id);
+                        }
+                        if (placeIDs.length > 0) {
+                            hotelDetailsSearch(placeIDs);
+                        }
+                    }
+                })
+            }
+        }
 
         //finds details for hotels found
-	    function hotelDetailsSearch(placeIDs) {
+        function hotelDetailsSearch(placeIDs) {
             //clears previous results from panel
-	        window.external.clearPanels();
+            window.external.clearPanels();
             //clear previous hotels from the hotel list
-	        window.external.clearHotelList();
+            window.external.clearHotelList();
             //deletes all previous markers
-	        deleteMarkers();
+            deleteMarkers();
             //places markers for all hotels found with details and adds them to a panel in the application
-	        for (i = 0; i < placeIDs.length; i++) {
-	            places.getDetails({ 'placeId': placeIDs[i] },
+            for (i = 0; i < placeIDs.length; i++) {
+                places.getDetails({ 'placeId': placeIDs[i] },
                     function (place, status) {
                         if (status == google.maps.places.PlacesServiceStatus.OK) {
-                            var marker = new google.maps.Marker({
-                                map: map,
-                                position: place.geometry.location
-                            });
-                            // initialize window information to empty
-                            var infowindow = new google.maps.InfoWindow({
-                                content: ''
-                            });
-                            // dispaly content once marker is clicked
-                            google.maps.event.addListener(marker, 'click', function () {
-                                infowindow.close();
-                                infowindow.setContent(contentString);
-                                infowindow.open(map, marker);
-                            });
-                            //set content for makrers
-                            var contentString = '<div id="content">' +
-                              '<div id="siteNotice">' +
-                              '</div>' +
-                              '<h1 id="firstHeading" class="firstHeading">' + place.name + '</h1>' +
-                              '<div id="bodyContent">' + place.formatted_address +
-                              '<h3 id="thirdHeading" class="thirdHeading">' + 'rate: ' + place.rating + '</h3>'
-                              '</div>' +
-                              '</div>';
-                            //add a marker indicating the position of the hotel
-                            markers.push(marker);
-                            
                             if (place.photos) {
+                                var marker = new google.maps.Marker({
+                                    map: map,
+                                    position: place.geometry.location
+                                });
+                                // initialize window information to empty
+                                var infowindow = new google.maps.InfoWindow({
+                                    content: ''
+                                });
+                                // dispaly content once marker is clicked
+                                google.maps.event.addListener(marker, 'click', function () {
+                                    infowindow.close();
+                                    infowindow.setContent(contentString);
+                                    infowindow.open(map, marker);
+                                });
+                                //set content for makrers
+                                var contentString = '<div id="content">' +
+                                  '<div id="siteNotice">' +
+                                  '</div>' +
+                                  '<h1 id="firstHeading" class="firstHeading">' + place.name + '</h1>' +
+                                  '<div id="bodyContent">' + place.formatted_address +
+                                  '<h3 id="thirdHeading" class="thirdHeading">' + 'rate: ' + place.rating + '</h3>'
+                                '</div>' +
+                                '</div>';
+                                //add a marker indicating the position of the hotel
+                                markers.push(marker);
+                                //call c# function: addPanel and addHotel
                                 window.external.addPanel(place.name, place.formatted_address, place.rating);
                                 window.external.addHotel(place.name, place.formatted_address, place.rating, place.formatted_phone_number, place.photos[0].getUrl({ 'maxWidth': 1024, 'maxHeight': 768 }));
                             }
-                            
                         }
-	            });
-	        }
-	    }
+                    });
+            }
+        }
 
         //sets all marker reference to null and empties the container holding all the markers
         ///Source: https://developers.google.com/maps/documentation/javascript/examples/marker-remove
-	    function deleteMarkers() {
-	        clearMarkers();
-	        markers = [];
-	    }
+        function deleteMarkers() {
+            clearMarkers();
+            markers = [];
+        }
 
         //sets all marker references to null
-	    function clearMarkers() {
-	        setMapOnAll(null);
-	    }
+        function clearMarkers() {
+            setMapOnAll(null);
+        }
 
         //sets all marker references to null
-	    function setMapOnAll(map) {
-	        for (var i = 0; i < markers.length; i++) {
-	            markers[i].setMap(map);
-	        }
-	    }
-	</script>
+        function setMapOnAll(map) {
+            for (var i = 0; i < markers.length; i++) {
+                markers[i].setMap(map);
+            }
+        }
+    </script>
     <script async defer
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBWBwHTP9RUW32hgGpvtSKsstydyp6Llbk
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBWBwHTP9RUW32hgGpvtSKsstydyp6Llbk
         &libraries=places&callback=initMap">
     </script>
-  </body>
+</body>
 </html>
